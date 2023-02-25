@@ -1,18 +1,18 @@
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
+import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AddJob from './components/AddJob';
+import './App.css
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <BrowserRouter>
         <Routes>
           <Route element={<AddJob />} path='/addjob' />
         </Routes>
+      </div>  
       </BrowserRouter>
-
-    </div>
+    
   );
 }
 
