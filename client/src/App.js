@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AddJob from './components/AddJob';
-import './App.css
+import './App.css'
 
 function App() {
   return (
