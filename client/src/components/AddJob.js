@@ -5,19 +5,19 @@ import '../App.css';
 
 
 const AddJob = () => {
-    const [jobs, setJobs] = useState([]);
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
-    const [location, setLocation] = useState();
+    const [jobs, setJobs] = useState();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("");
     const [errMsg, setErrMsg] = useState({})
 
     const navigate = useNavigate();
 
     const onJobAddition = (e) => { 
         e.preventDefault();
-        axios.post('http://localhost:8000/api/addJob', {
+        axios.post("http://localhost:8000/api/addJob", {
             title, description, location
-        }, {withCredentials:true})
+        })
         .then(res => {
             console.log(res.data);
             setJobs([...jobs, res.data]);
