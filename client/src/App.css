@@ -2,6 +2,11 @@
   margin: 0px;
   padding: 0px;
 }
+
+* ul {
+  list-style-type: none;
+}
+/* add job component*/
 .nav-bar {
 border: 1px solid black;
 height: 55px;
@@ -40,4 +45,48 @@ justify-content: space-between;
 }
 .btn {
   width: 140px;
+}
+
+/* home page component*/
+
+.home-body {
+  display: flex;
+  border: 1px solid black; 
+  flex-direction: row;
+}
+.l-control {
+  
+}
+
+.table {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: row;
+  width: 700px;
+  justify-content: space-between;
+ 
+}
+.table-body {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.table-content {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  align-items: center;
+}
+.l-top {
+  display: flex;
+  justify-content: space-around;
+}
+.l-table {
+  border: 1px solid orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 700px;
+  
 }

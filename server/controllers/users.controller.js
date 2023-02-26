@@ -52,6 +52,9 @@ const UsersController = {
         .catch(err=> {
             res.status(400).json({message: 'An error has occured', error: err})
         })
+    },
+    getOne: (req, res)=> {
+        User.findById({email: req.body}, )
     }
 }
 

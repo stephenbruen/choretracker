@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
         required: [true, "A Password is required"],
         minLength: [6, "Password should be at least 6 characters"]
     }, 
+    usersJobs: {
+        type: String,
+        
+    }
     
 }, {timestamps: true})
 
