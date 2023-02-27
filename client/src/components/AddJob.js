@@ -24,6 +24,7 @@ const AddJob = () => {
             setTitle("");
             setDescription("");
             setLocation("");
+            navigate('/dashboard');
         })
         .catch(err => {
             console.log(err.response.data.error.errors);
@@ -49,10 +50,10 @@ const AddJob = () => {
         <form onSubmit={onJobAddition}>
         <div className='nav-bar'>
             <h2>Add a Job</h2>
-            {// need location for logout and back
+            {// need location for logout
             }
             <ul className='list-control'>
-                <Link to='/'>back</Link>
+                <Link to='/dashboard'>back</Link>
                 <Link to='/'>logout</Link>
             </ul>
         </div>

@@ -88,7 +88,7 @@ const SignUp = () => {
                         Email
                     </Form.Label>
                     <Col sm = {10}>
-                        <Form.Control type='text' value={email} onChange={emailHandler} />
+                        <Form.Control type='email' value={email} onChange={emailHandler} />
                     </Col>
                 </Form.Group>
                 
@@ -99,7 +99,7 @@ const SignUp = () => {
                         Password
                     </Form.Label>
                     <Col sm ={10}>
-                        <Form.Control type='text' value={password} onChange={passwordHandler} />
+                        <Form.Control type='password' value={password} onChange={passwordHandler} />
                     </Col>
                 </Form.Group>
                 
@@ -109,7 +109,7 @@ const SignUp = () => {
                         Confirm Password
                     </Form.Label>
                     <Col sm = {10}>
-                        <Form.Control type='text' value={confirmPassword} onChange={confirmPasswordHandler} />
+                        <Form.Control type='password' value={confirmPassword} onChange={confirmPasswordHandler} />
                     </Col>
                 </Form.Group>
                 
