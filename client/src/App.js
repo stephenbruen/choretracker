@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AddJob from './components/AddJob';
-import SignUp from './components/SignUp';
+import './App.css'
+import HomePage from './components/HomePage';
 import Login from './components/Login';
-import Dashboard from './components/Dashboard';
 import './App.css';
 
 
@@ -14,8 +14,7 @@ function App() {
         <Routes>
           <Route element={<AddJob />} path='/addjob' />
           <Route element = {<SignUp/>} path = '/register'/>
-          <Route element = {<Login/>} path = '/' />
-          <Route element = {<Dashboard/>} path = '/dashboard'/>
+          <Route element = {<Login/>} path = '/login' />
         </Routes>
       </div>  
       </BrowserRouter>

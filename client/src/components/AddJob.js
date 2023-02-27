@@ -5,7 +5,7 @@ import '../App.css';
 
 
 const AddJob = () => {
-    const [jobs, setJobs] = useState();
+    const [jobs, setJobs] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
@@ -17,7 +17,7 @@ const AddJob = () => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/addJob", {
             title, description, location
-        })
+        },{withCredentials:true})
         .then(res => {
             console.log(res.data);
             setJobs([...jobs, res.data]);
@@ -60,7 +60,7 @@ const AddJob = () => {
         <div className='body'>
             <div className='form'>
                 <div className='form-control'>
-                {errMsg.title? <p>{errMsg.title.message}</p> : null}
+                {errMsg.title ? <p>{errMsg.title.message}</p> : null}
                 <label htmlFor='title'>Title</label>
                 <input type='text' value={title} onChange={handleTitle} />
                 </div>
