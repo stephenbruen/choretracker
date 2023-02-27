@@ -13,6 +13,7 @@ app.use(cors({credentials: true,  origin: "http://localhost:3000"}),);
 require("./config/mongoose.config");
 require("./routes/jobs.routes")(app);
 require("./routes/users.routes")(app);
+require('./routes/userJob.routes')(app)
 
 
 app.listen(8000, () => {console.log("Listening at Port 8000")});

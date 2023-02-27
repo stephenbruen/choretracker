@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/users.model')
+
 const bcrypt = require('bcrypt')
 
 const UsersController = {
@@ -55,7 +56,8 @@ const UsersController = {
     },
     getOne: (req, res)=> {
         User.findById({email: req.body}, )
-    }
+    },
+    
 }
 
 module.exports = UsersController
