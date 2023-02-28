@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/users.model')
 
+
 const bcrypt = require('bcrypt')
 
 const UsersController = {
