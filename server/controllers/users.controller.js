@@ -23,14 +23,14 @@ const UsersController = {
         if (user === null) {
             return res.status(400).json({message: "Invalid User"})
         }
-        const correctPassword = bcrypt.compare(req.body.password, user.password)
+        const correctPassword = await bcrypt.compare(req.body.password, user.password)
 
         if(!correctPassword) {
             return res.status(400).json({message: "Invalid Password"})
         }
         const userToken = jwt.sign({
             id: user._id
-        }, process.env.secret_key)
+        }, process.env.SECRET_KEY)
         console.log(userToken)
         
         res
