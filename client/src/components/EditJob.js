@@ -23,13 +23,13 @@ const EditJob = (props) => {
         .catch((err) => {
             console.log(err.response);
         })
-    }, []);
+    }, [id]);
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        axios.put(`http://localhost:8000/api/spending/${id}/edit`, {
+        axios.put(`http://localhost:8000/api/edit/${id}`, {
             title,
             description,
             location,
@@ -37,18 +37,32 @@ const EditJob = (props) => {
         .then((response) => {
             console.log(response);
             console.log(response.data);
-            navigate("/");
+            navigate("/home");
         })
         .catch((err) => {
-            console.log(err.response.data.errors);
-            setErrMsg(err.response.data.errors);
+            console.log(err.response.data.error.errors);
+            setErrMsg(err.response.data.error.errors);
         });
-    };
+    }
+        const handleTitle = (e) => {
+            setErrMsg("");
+            setTitle(e.target.value);
+        }
+        const handleDescription = (e) => {
+            setErrMsg("");
+            setDescription(e.target.value);
+        }
+        const handleLocation = (e) => {
+            setErrMsg("");
+            setLocation(e.target.value);
+        }
+
 
     return (
         <div>
             <div>
                 <h1>Edit this Job</h1>
+                <Link to = {'/home'}>Back</Link>
             </div>
             <form onSubmit={onSubmitHandler}>
                 <div className='body'>
@@ -69,12 +83,14 @@ const EditJob = (props) => {
                         <input type='text' value={location} onChange={handleLocation} />
                         </div>
                         <div className='submit-btn'>
-                        <input className='btn'type="submit"/>
+                        <input className='btn'type="submit" value = "Submit"/>
                         </div>
                     </div>
                 </div>
         </form>
     </div>
-        </div>
+
     )
 }
+
+export default EditJob

@@ -5,12 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
-
+import {Link} from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errMsg, setErrMsg] = useState({})
+    const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -22,6 +23,8 @@ const Login = () => {
             console.log(res)
             console.log(res.data)
             console.log(email, password)
+            navigate('/home');
+            
         })
     }
 
@@ -44,7 +47,7 @@ const Login = () => {
                             Email
                         </Form.Label>
                         <Col sm = {10}>
-                            <Form.Control type='text' value={email} onChange={emailHandler} />
+                            <Form.Control type='email' value={email} onChange={emailHandler} />
                         </Col>
                 </Form.Group>
 
@@ -59,6 +62,7 @@ const Login = () => {
                 </Form.Group>
                 <Button variant = "primary" type = "submit">Login</Button>
             </Form>
+            <h3>Don't have an account?<Link to = {'/register'}> Sign Up</Link> here!</h3>
         </div>
     )
 }
