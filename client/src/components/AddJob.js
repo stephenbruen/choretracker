@@ -24,7 +24,7 @@ const AddJob = () => {
             setTitle("");
             setDescription("");
             setLocation("");
-            navigate('/dashboard');
+            navigate('/home');
         })
         .catch(err => {
             console.log(err.response.data.error.errors);
@@ -53,7 +53,7 @@ const AddJob = () => {
             {// need location for logout
             }
             <ul className='list-control'>
-                <Link to='/dashboard'>back</Link>
+                <Link to='/home'>back</Link>
                 <Link to='/'>logout</Link>
             </ul>
         </div>
@@ -75,7 +75,7 @@ const AddJob = () => {
                 <input type='text' value={location} onChange={handleLocation} />
                 </div>
                 <div className='submit-btn'>
-                <input className='btn'type="submit"/>
+                <input className='btn'type="submit" value = "Submit"/>
                 </div>
             </div>
         </div>

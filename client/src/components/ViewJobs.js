@@ -57,6 +57,7 @@ const ViewJobs = () => {
             </div>
             <div className='view-body'>
                 <h2>{viewJob.description}</h2>
+                <h2>{viewJob.location}</h2>
             </div>
             <div className='view-bottom'>
                 <h2>

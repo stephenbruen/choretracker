@@ -23,7 +23,7 @@ const Login = () => {
             console.log(res)
             console.log(res.data)
             console.log(email, password)
-            navigate('/dashboard');
+            navigate('/home');
             
         })
     }
