@@ -16,7 +16,7 @@ const SignUp = () => {
     const [errMsg, setErrMsg] = useState({})
     const navigate = useNavigate();
 
-    const onSubmitHandler = async (e) => {
+    const onSubmitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/register', {
             firstName,

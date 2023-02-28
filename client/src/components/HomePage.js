@@ -16,8 +16,10 @@ const HomePage = () => {
     },[])
     //need to configure this in controller to show logged in user jobs as "my jobs"
     useEffect(()=> {
-        axios.get('http://localhost:8000/api/allUsers')
-        .then(res => setUser(res.data))
+        axios.get('http://localhost:8000/api/viewUserJob')
+        .then(res => {
+            console.log(res)
+            setUser(res.data)})
         .catch(err=> console.log(err))
     },[])
 
@@ -50,7 +52,7 @@ const HomePage = () => {
                                             <td>{job.location}</td>
                                             <ul>
                                                 <li>
-                                                <a onClick={(e)=> navigate('./view')}href=''>view</a>
+                                                <a onClick={(e)=> navigate('/view/' + job._id)}href=''>view</a>
                                                 <a onClick={(e)=> navigate('./addJob')}href=''>add</a>
                                                 <a onClick={(e)=> navigate('./edit')}href=''>edit</a>
                                                 {// delete functionality on last onClick
@@ -83,7 +85,7 @@ const HomePage = () => {
                                             user.map((job, idx)=> {
                                                 return (
                                                 <div key ={idx} className='user-table'>
-                                                    <td>{job.usersJobs}</td>
+                                                    <td>{job.title}</td>
                                                     <a onClick={(e)=> navigate('./view')} href=''>view</a>
                                                     <a href=''>done</a>
                                                 </div>

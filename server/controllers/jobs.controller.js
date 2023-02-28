@@ -1,4 +1,5 @@
-const Jobs = require('../models/jobs.model');
+const Jobs = require('../models/jobs.model')
+
 
 module.exports.createJob = (request, response) => {
     Jobs.create(request.body)
