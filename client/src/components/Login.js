@@ -18,13 +18,16 @@ const Login = () => {
         axios.post("http://localhost:8000/api/login", {
             email,
             password
-        })
+        }, {withCredentials:true})
         .then (res => {
             console.log(res)
             console.log(res.data)
             console.log(email, password)
-            navigate('/home');
-            
+            navigate('/home');    
+        })
+        .catch(err => {
+            console.log(err.response.data.error.errors);
+            setErrMsg(err.response.data.error.errors);
         })
     }
 
@@ -42,7 +45,7 @@ const Login = () => {
             <h1>Login</h1>
             <Form onSubmit = {onSubmitHandler}>
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalEmail">
-                        {errMsg.email? <p>{errMsg.email.message}</p> : null}
+                        {errMsg.email? <p>{errMsg.email.validate.message}</p> : null}
                         <Form.Label column sm = {2}>
                             Email
                         </Form.Label>
@@ -57,7 +60,7 @@ const Login = () => {
                             Password
                         </Form.Label>
                         <Col sm ={10}>
-                            <Form.Control type='text' value={password} onChange={passwordHandler} />
+                            <Form.Control type='password' value={password} onChange={passwordHandler} />
                         </Col>
                 </Form.Group>
                 <Button variant = "primary" type = "submit">Login</Button>
