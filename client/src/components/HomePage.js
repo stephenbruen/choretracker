@@ -50,7 +50,7 @@ const HomePage = () => {
     return (
         <div className='container'>
             <h1>welcome </h1>
-            <Button onClick = {onLogout} variant = "primary">Logout</Button>
+            <Button onClick = {onLogout} variant = "danger">Logout</Button>
             <div className='home-body'>
                 <div className='l-control'>
                     <div className='l-table'>
