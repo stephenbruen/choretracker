@@ -29,6 +29,20 @@ const HomePage = () => {
             console.log("failed to delete job", err.response)
         })
     }
+    const onDeleteHandle2 = (userJobId) => {
+        axios.delete('http://localhost:8000/api/deleteUserJob/' + userJobId)
+        .then((res) => {
+            console.log("Successfully deleted job");
+            console.log(res);
+            const filterJob = jobs.filter((userJob) => {
+                return userJob._id !== userJobId;
+            })
+            setUser(filterJob);
+        })
+        .catch((err) => {
+            console.log("failed to delete job", err.response)
+        })
+    }
     
     useEffect(()=> {
         axios.get('http://localhost:8000/api/dashboard')
@@ -83,7 +97,7 @@ const HomePage = () => {
                                             <td><a onClick={(e)=> navigate('./addJob')}href=''>Add</a></td>
                                             <td><a onClick={(e)=> navigate('/edit/' +job._id)}href=''>Edit</a></td>
                                             <td><a onClick = {(e) => onDeleteHandler(job._id)} href=''>Cancel</a></td>
-                                        </tr>
+                                        </tr>   
                                     })
                                 }
                                 
@@ -102,7 +116,7 @@ const HomePage = () => {
                             <tbody>
                                 <tr>
                                         {
-                                            user.map((job, idx)=> {
+                                            user.map((user, idx)=> {
                                                 return (
                                                 <tr key ={idx} className='user-table'>
                                                     <td>{job.title}</td>

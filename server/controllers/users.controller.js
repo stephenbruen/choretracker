@@ -10,7 +10,7 @@ const UsersController = {
         .then(newUser => {
             const userToken = jwt.sign({
                 id: newUser._id
-            }, process.env.secret_key)
+            }, process.env.SECRET_KEY)
             res.cookie("usertoken", userToken, {
                 httpOnly: true
             }).status(201).json({msg: 'success', user: newUser})

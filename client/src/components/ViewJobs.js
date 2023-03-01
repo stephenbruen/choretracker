@@ -34,6 +34,8 @@ const ViewJobs = () => {
         .catch(err=> console.log(err))
     },[])
 
+    
+
     const Jobs = {
         title, description, location
     }
