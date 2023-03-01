@@ -116,7 +116,7 @@ const HomePage = () => {
                             <tbody>
                                 <tr>
                                         {
-                                            user.map((user, idx)=> {
+                                            user.map((job, idx)=> {
                                                 return (
                                                 <tr key ={idx} className='user-table'>
                                                     <td>{job.title}</td>
