@@ -20,8 +20,8 @@ const ViewJobs = () => {
         .then((res)=> {
             console.log(res.data)
             setTitle(res.data.title)
-            setDescription(res.data.title)
-            setLocation(res.data.jobs)
+            setDescription(res.data.description)
+            setLocation(res.data.location)
         })
         .catch(err => {
             console.log(err)

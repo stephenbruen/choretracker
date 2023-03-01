@@ -129,3 +129,15 @@ padding-right: 10px;
   margin: 5px;
   text-decoration: none;
 }
+.view-userTop {
+  display: flex;
+  justify-content: space-around;
+  
+}
+.user-job-btns  {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+
+
+}
