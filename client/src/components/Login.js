@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom';
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [errMsg, setErrMsg] = useState({})
+    const [errMsg, setErrMsg] = useState([])
     const navigate = useNavigate();
 
     const onSubmitHandler = async (e) => {
@@ -25,27 +25,35 @@ const Login = () => {
             console.log(email, password)
             navigate('/home');    
         })
-        .catch(err => {
-            console.log(err.response.data.error.errors);
-            setErrMsg(err.response.data.error.errors);
+        .catch((err) => {
+            console.log(err)
+            const errorResponse = err.response.data.error.errors;
+            const errorList = []
+
+            for (const key of Object.key(errorResponse)) {
+                errorList.push(errorResponse[key].message)
+            }
+            setErrMsg(errorList);
         })
     }
 
     const emailHandler = (e) => {
-        setErrMsg("");
         setEmail(e.target.value);
     }
     const passwordHandler = (e) => {
-        setErrMsg("");
         setPassword(e.target.value);
     }
 
     return (
         <div>
+            <div className = "top-bar">
+                <h1>Welcome to Chore Tracker</h1>
+            </div>
             <h1>Login</h1>
-            <Form onSubmit = {onSubmitHandler}>
+            {errMsg.map((err, index) => <p className = "errors" key = {index}>{err}</p>)}
+            <Form className = "login-form" onSubmit = {onSubmitHandler}>
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalEmail">
-                        {errMsg.email? <p>{errMsg.email.validate.message}</p> : null}
+                        
                         <Form.Label column sm = {2}>
                             Email
                         </Form.Label>
@@ -55,7 +63,7 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalPassword">
-                        {errMsg.password? <p>{errMsg.password.message}</p> : null}
+                        
                         <Form.Label column sm = {2}>
                             Password
                         </Form.Label>
@@ -63,7 +71,7 @@ const Login = () => {
                             <Form.Control type='password' value={password} onChange={passwordHandler} />
                         </Col>
                 </Form.Group>
-                <Button variant = "primary" type = "submit">Login</Button>
+                <Button variant = "primary" type = "submit" className = "login">Login</Button>
             </Form>
             <h3>Don't have an account?<Link to = {'/register'}> Sign Up</Link> here!</h3>
         </div>
