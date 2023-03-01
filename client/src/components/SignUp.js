@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -60,10 +61,13 @@ const SignUp = () => {
 
     return (
         <div>
+            <div className = "top-bar">
+                <h1>Welcome to Chore Tracker</h1>
+            </div>
             <h1>Sign Up!</h1>
             <Form className = "style" onSubmit = {onSubmitHandler}>
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalFirstName">
-                    {errMsg.firstName? <p>{errMsg.firstName.message}</p> : null}
+                    {errMsg.firstName? <p className = "errors">{errMsg.firstName.message}</p> : null}
                     <Form.Label column sm = {2}>
                         First Name
                     </Form.Label>
@@ -73,7 +77,7 @@ const SignUp = () => {
                 </Form.Group>
                 
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalLastName">
-                    {errMsg.lastName? <p>{errMsg.lastName.message}</p> : null}
+                    {errMsg.lastName? <p className = "errors">{errMsg.lastName.message}</p> : null}
                     <Form.Label column sm = {2}>
                         Last Name
                     </Form.Label>
@@ -83,7 +87,7 @@ const SignUp = () => {
                 </Form.Group>
                 
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalEmail">
-                    {errMsg.email? <p>{errMsg.email.message}</p> : null}
+                    {errMsg.email? <p className = "errors">{errMsg.email.message}</p> : null}
                     <Form.Label column sm = {2}>
                         Email
                     </Form.Label>
@@ -94,7 +98,7 @@ const SignUp = () => {
                 
 
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalPassword">
-                    {errMsg.password? <p>{errMsg.password.message}</p> : null}
+                    {errMsg.password? <p className = "errors">{errMsg.password.message}</p> : null}
                     <Form.Label column sm = {2}>
                         Password
                     </Form.Label>
@@ -104,7 +108,7 @@ const SignUp = () => {
                 </Form.Group>
                 
                 <Form.Group as = {Row} className = "mb-3" controlId = "formHorizontalConfirmPassword">
-                    {errMsg.confirmPassword? <p>{errMsg.confirmPassword.message}</p> : null}
+                    {errMsg.confirmPassword? <p className = "errors">{errMsg.confirmPassword.message}</p> : null}
                     <Form.Label column sm= {2}>
                         Confirm Password
                     </Form.Label>
@@ -113,8 +117,9 @@ const SignUp = () => {
                     </Col>
                 </Form.Group>
                 
-                <Button variant = "primary" type = "submit">Sign Up</Button>
+                <Button variant = "primary" type = "submit" className = "signup">Sign Up</Button>
             </Form>
+            <h3>Already have an account?<Link to = {'/'}> Login</Link> here!</h3>
         </div>
     )
 }

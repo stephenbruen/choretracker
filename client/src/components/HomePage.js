@@ -2,12 +2,17 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import '../App.css'
-import Button from 'react-bootstrap/Button'
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Table from 'react-bootstrap/Table';
+import { useParams} from 'react-router-dom';
 
 
 const HomePage = () => {
     const [jobs, setJobs] = useState([])
     const [user, setUser] = useState([])
+    const {id} = useParams();
     const navigate = useNavigate()
     //delete function did not work
     const onDeleteHandler = (jobId) => {
@@ -63,50 +68,46 @@ const HomePage = () => {
 
     return (
         <div className='container'>
-            <h1>welcome </h1>
-            <Button onClick = {onLogout} variant = "danger">Logout</Button>
+            <Navbar expand = "lg">
+                <Container id = "nav-bar-container">
+                    <Navbar.Brand href = "/home"><h2 className = "title">Chore Tracker</h2></Navbar.Brand>
+                        <Nav className = "me-auto">
+                            <Nav.Link href = "/addjob" className = "links">Add a Job</Nav.Link>
+                            <Nav.Link href = '' onClick = {onLogout} className = "links">Logout</Nav.Link>
+                        </Nav>
+                </Container>
+            </Navbar>
             <div className='home-body'>
                 <div className='l-control'>
                     <div className='l-table'>
-                        <table>
+                        <Table className = "job-table" striped bordered hover>
                             <thead>
                                 <tr className='table'>
                                     <th>Job</th>
                                     <th>Location</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr className='table-body'>
+                                
                                 {
                                     jobs.map((job, idx)=> {
-                                        return <div className='table-content' key={idx}>
+                                        return <tr className='table-content' key={idx}>
                                             <td>{job.title}</td>
                                             <td>{job.location}</td>
-                                            <ul>
-                                                <li>
-                                                <a onClick={(e)=> navigate('/view/' + job._id)}href=''>view</a>
-                                                <a onClick={(e)=> navigate('/addJob')}href=''>add</a>
-                                                <a onClick={(e)=> navigate('/edit/' +job._id)}href=''>edit</a>
-                                                {// delete functionality on last onClick
-                                                }
-                                                <a onClick = {() => onDeleteHandler(job._id)} href=''>cancel</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            <td><a onClick={(e)=> navigate('/view/' + job._id)}href=''>View</a></td>
+                                            <td><a onClick={(e)=> navigate('./addJob')}href=''>Add</a></td>
+                                            <td><a onClick={(e)=> navigate('/edit/' +job._id)}href=''>Edit</a></td>
+                                            <td><a onClick = {(e) => onDeleteHandler(job._id)} href=''>Cancel</a></td>
+                                        </tr>   
                                     })
                                 }
-                                </tr>
-                            </tbody>
-                        </table>
+                                
+                            </thead>
+                        </Table>
                     </div>
                 </div>
                 <div className='r-control'>
-                    <div className='r-top'>
-                        <button onClick={(e)=> navigate('/addJob')}>Add Job</button>
-                    </div>
                     <div className='r-bottom'>
-                        <table>
+                        <Table className = "other-job" striped bordered hover>
                             <thead>
                                 <tr>
                                     <th>My Jobs</th>
@@ -117,17 +118,17 @@ const HomePage = () => {
                                         {
                                             user.map((user, idx)=> {
                                                 return (
-                                                <div key ={idx} className='user-table'>
-                                                    <td>{user.title}</td>
-                                                    <a onClick={(e)=> navigate('/viewUserJob/' + user._id)} href=''>view</a>
-                                                    <a onClick = {() => onDeleteHandle2(user._id)} href=''>done</a>
-                                                </div>
+                                                <tr key ={idx} className='user-table'>
+                                                    <td>{job.title}</td>
+                                                    <td><a onClick={(e)=> navigate('/view/' + job._id)} href=''>View</a></td> 
+                                                    <td><a href=''>Done</a></td>
+                                                </tr>
                                                 )
                                             })
                                         }
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
                     </div>
                 </div>
 
