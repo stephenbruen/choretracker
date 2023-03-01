@@ -94,7 +94,7 @@ const HomePage = () => {
                                             <td>{job.title}</td>
                                             <td>{job.location}</td>
                                             <td><a onClick={(e)=> navigate('/view/' + job._id)}href=''>View</a></td>
-                                            <td><a onClick={(e)=> navigate('./addJob')}href=''>Add</a></td>
+                                            <td><a onClick={(e)=> navigate('/addJob')}href=''>Add</a></td>
                                             <td><a onClick={(e)=> navigate('/edit/' +job._id)}href=''>Edit</a></td>
                                             <td><a onClick = {(e) => onDeleteHandler(job._id)} href=''>Cancel</a></td>
                                         </tr>   
@@ -120,8 +120,8 @@ const HomePage = () => {
                                                 return (
                                                 <tr key ={idx} className='user-table'>
                                                     <td>{job.title}</td>
-                                                    <td><a onClick={(e)=> navigate('/view/' + job._id)} href=''>View</a></td> 
-                                                    <td><a href=''>Done</a></td>
+                                                    <td><a onClick={(e)=> navigate('/viewUserJob/' + job._id)} href=''>View</a></td> 
+                                                    <td><a onClick = {(e) => onDeleteHandle2(job._id)}href=''>Done</a></td>
                                                 </tr>
                                                 )
                                             })
