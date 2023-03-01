@@ -31,6 +31,8 @@ const ViewJobs = () => {
         .catch(err=> console.log(err))
     },[])
 
+    
+
     const Jobs = {
         title, description, location
     }
@@ -49,7 +51,7 @@ const ViewJobs = () => {
     return (
         <div className='container'>
             <div className='view-top'>
-                <h2>{jobs.title}</h2>
+                <h2>{viewJob.title}</h2>
                 <ul>
                     <a onClick={(e)=> navigate('/home')} href=''>back</a>
                     <a href=''>logout</a>
