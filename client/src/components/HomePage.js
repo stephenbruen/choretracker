@@ -24,6 +24,20 @@ const HomePage = () => {
             console.log("failed to delete job", err.response)
         })
     }
+    const onDeleteHandle2 = (userJobId) => {
+        axios.delete('http://localhost:8000/api/deleteUserJob/' + userJobId)
+        .then((res) => {
+            console.log("Successfully deleted job");
+            console.log(res);
+            const filterJob = jobs.filter((userJob) => {
+                return userJob._id !== userJobId;
+            })
+            setUser(filterJob);
+        })
+        .catch((err) => {
+            console.log("failed to delete job", err.response)
+        })
+    }
     
     useEffect(()=> {
         axios.get('http://localhost:8000/api/dashboard')
@@ -72,7 +86,7 @@ const HomePage = () => {
                                             <ul>
                                                 <li>
                                                 <a onClick={(e)=> navigate('/view/' + job._id)}href=''>view</a>
-                                                <a onClick={(e)=> navigate('./addJob')}href=''>add</a>
+                                                <a onClick={(e)=> navigate('/addJob')}href=''>add</a>
                                                 <a onClick={(e)=> navigate('/edit/' +job._id)}href=''>edit</a>
                                                 {// delete functionality on last onClick
                                                 }
@@ -101,12 +115,12 @@ const HomePage = () => {
                             <tbody>
                                 <tr>
                                         {
-                                            user.map((job, idx)=> {
+                                            user.map((user, idx)=> {
                                                 return (
                                                 <div key ={idx} className='user-table'>
-                                                    <td>{job.title}</td>
-                                                    <a onClick={(e)=> navigate('/view/' + job._id)} href=''>view</a>
-                                                    <a href=''>done</a>
+                                                    <td>{user.title}</td>
+                                                    <a onClick={(e)=> navigate('/viewUserJob/' + user._id)} href=''>view</a>
+                                                    <a onClick = {() => onDeleteHandle2(user._id)} href=''>done</a>
                                                 </div>
                                                 )
                                             })

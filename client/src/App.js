@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Signup from './components/SignUp'
 import ViewJobs from './components/ViewJobs';
 import EditJob from './components/EditJob';
+import ViewUserJobs from './components/ViewUserJobs';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route element={<Signup />} path='/register' />
           <Route element={<ViewJobs />} path='/view/:id' />
           <Route element = {<EditJob/>} path = '/edit/:id'/>
+          <Route element={<ViewUserJobs />} path='/viewUserJob/:id' />
         </Routes>
       </div>  
       </BrowserRouter>

@@ -10,6 +10,18 @@ const AddController = {
         UserJob.find({})
         .then(job => res.json(job))
         .catch(err => res.json(err))
+    },
+    deleteJob: (req, res) => {
+        UserJob.deleteOne({_id: req.params.id})
+        .then(deleteConfirmation => res.json(deleteConfirmation))
+        .catch((err) => console.log(err))
+    },
+    findOneJob: (request, response) => {
+        UserJob.findOne({_id: request.params.id})
+        .then((oneJob) => {
+            console.log(oneJob);
+            response.json(oneJob);
+        })
     }
 }
 
