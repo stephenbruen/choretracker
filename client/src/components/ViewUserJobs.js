@@ -18,16 +18,20 @@ const ViewUserJobs = () => {
 
     return (
         <div className='container'>
-            <div className='view-top'>
+            <div className='view-userTop'>
                 <h2>{viewJob.title}</h2>
-                <ul>
+            <div>
+                <ul className='user-job-btns'>
                     <a onClick={(e)=> navigate('/home')} href=''>back</a>
                     <a href=''>logout</a>
                 </ul>
             </div>
-            <div className='view-body'>
-                <h2>{viewJob.description}</h2>
-                <h2>{viewJob.location}</h2>
+            </div>
+            <div className='view-container'>
+                <div className='view-body'>
+                    <h2>{viewJob.description}</h2>
+                    <h2>Location : {viewJob.location}</h2>
+                </div>
             </div>
         </div>
             

@@ -133,4 +133,16 @@ padding-right: 10px;
 h1 {
   margin-bottom: 15px;
   margin-top: 5px;
+  }
+  
+.view-userTop {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.user-job-btns  {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
 }
